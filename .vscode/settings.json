@@ -1,0 +1,111 @@
+{
+    "go.goroot": "/usr/local/go",
+    // "go.gopath": "",
+    "go.inferGopath": false,
+    "git.autofetch": true,
+    "workbench.colorTheme": "One Dark Pro Monokai Darker",
+    "workbench.iconTheme": "easy-icons",
+    "editor.renderControlCharacters": false,
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "breadcrumbs.enabled": true,
+    "terminal.explorerKind": "external",
+    "editor.cursorStyle": "block",
+    "editor.links": false,
+    "editor.mouseWheelZoom": true,
+    "editor.renderLineHighlight": "all",
+    "editor.suggest.shareSuggestSelections": true,
+    "outline.icons": true,
+    "search.showLineNumbers": true,
+    "search.smartCase": true,
+    "go.gocodePackageLookupMode": "go",
+    "go.gotoSymbol.includeGoroot": true,
+    "go.gotoSymbol.includeImports": true,
+    "go.buildOnSave": "off",
+    "go.gocodeAutoBuild": true,
+    "go.installDependenciesWhenBuilding": true,
+    "go.buildFlags": [],
+    "go.buildTags": "",
+    "go.coverOnSingleTest": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.docsTool": "guru",
+    "go.formatTool": "goimports",
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "package",
+    "go.lintFlags": [
+      "--fast"
+    ],
+    "go.formatFlags": [],
+    "go.vetFlags": [],
+    "go.vetOnSave": "package",
+    "go.generateTestsFlags": [],
+    "go.liveErrors": {
+      "enabled": true,
+      "delay": 500
+    },
+    "go.gocodeFlags": [
+      "-builtin",
+      "-ignore-case",
+      "-unimported-packages"
+    ],
+    "go.enableCodeLens": {
+      "references": true,
+      "runtest": true
+    },
+    "go.delveConfig": {
+      "dlvLoadConfig": {
+        "followPointers": true,
+        "maxVariableRecurse": 1,
+        "maxStringLen": 64,
+        "maxArrayValues": 64,
+        "maxStructFields": -1
+      },
+      "apiVersion": 2,
+      "showGlobalVariables": true
+    },
+    "go.editorContextMenuCommands": {
+      "toggleTestFile": true,
+      "addTags": true,
+      "removeTags": true,
+      "testAtCursor": true,
+      "testFile": true,
+      "testPackage": true,
+      "generateTestForFunction": true,
+      "generateTestForFile": true,
+      "generateTestForPackage": true,
+      "addImport": true,
+      "testCoverage": true,
+      "playground": true,
+      "debugTestAtCursor": true
+    },
+    "go.playground": {
+      "openbrowser": false,
+      "share": false,
+      "run": false
+    },
+    "go.addTags": {
+      "tags": "json",
+      "options": "json=omitempty",
+      "promptForTags": true,
+      "transform": "snakecase"
+    },
+    "go.removeTags": {
+      "tags": "",
+      "options": "",
+      "promptForTags": false
+    },
+    "[go]": {
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "go.alternateTools": {
+      "go-langserver": "gopls"
+    },
+    "go.useLanguageServer": false,
+    "go.languageServerFlags": [],
+    "go.languageServerExperimentalFeatures": {
+      "diagnostics": false
+    }
+  }

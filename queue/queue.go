@@ -46,9 +46,11 @@ func (cq *CircularQueue) Push(member interface{}) bool {
 		return false
 	}
 
-	cq.Used += 1
+	cq.Members[cq.Rear] = member
 
-	cq.Members = append(cq.Members, member)
+	cq.Rear = (cq.Rear + 1) % cq.Capacity
+
+	cq.Used++
 
 	return true
 }
@@ -58,9 +60,10 @@ func (cq *CircularQueue) Pop() interface{} {
 		return nil
 	}
 
-	cq.Used -= 1
-	member := cq.Members[0]
-	cq.Members = cq.Members[1:]
+	member := cq.Members[cq.Front]
+	cq.Front = (cq.Front + 1) % cq.Capacity
+
+	cq.Used--
 
 	return member
 }
