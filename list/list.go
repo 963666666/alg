@@ -4,11 +4,13 @@ type List struct {
 	Next *List
 	Val  interface{}
 
-	length
+	length int
 }
 
-func NewSingle() *List {
-
+func NewDummy() *List {
+	return &List{
+		Val: -1,
+	}
 }
 
 func (l *List) AddAtTail(val interface{}) {
@@ -33,4 +35,14 @@ func (l *List) AddAtIndex(index int, val interface{}) {
 
 func (l *List) DeleteAtIndex(index int) {
 
+}
+
+func (l *List) getPrevNode(index int) {
+	var indexFront *List = l.Next
+	var indexBack *List = l
+
+	for i := 0; i < index; i++ {
+		indexBack = indexFront
+		indexFront = indexBack.Next
+	}
 }
