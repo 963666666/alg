@@ -22,7 +22,12 @@ func (l *List) AddAtTail(val interface{}) {
 }
 
 func (l *List) AddAtHead(val interface{}) {
+	l.Next = &List{
+		Val:  val,
+		Next: l.Next.Next,
+	}
 
+	l.length++
 }
 
 func (l *List) GetByIndex(index int) interface{} {
@@ -45,4 +50,19 @@ func (l *List) getPrevNode(index int) {
 		indexBack = indexFront
 		indexFront = indexBack.Next
 	}
+}
+
+func (l *List) Reverse() *List {
+	newList := NewDummy()
+	var prevNode = l.Next
+	for i := 0; i < l.length; i++ {
+		if prevNode == nil {
+			return newList
+		}
+
+		newList.AddAtHead(prevNode.Val)
+		prevNode = l.Next
+	}
+
+	return newList
 }
