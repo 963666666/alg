@@ -9,5 +9,5 @@ func Index(c *gin.Context) {
 		ch = ch
 	}
 
-	c.String(200, "ok", nil)
+	c.String(200, "ok")
 }
