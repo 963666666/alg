@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
-	"lag/tree"
+	"github.com/gin-gonic/gin"
+	"lag/api"
+	"net/http"
 	"strconv"
+
+	_ "net/http/pprof"
 )
 
 type Info struct {
@@ -13,25 +17,13 @@ type Info struct {
 }
 
 func main() {
-	treeNode := new(tree.TreeNode)
+	go http.ListenAndServe("0.0.0.0:6060", nil)
 
-	treeNode.Val = 1
-	treeNode.Left = &tree.TreeNode{
-		Val: 2,
-	}
-	treeNode.Right = &tree.TreeNode{
-		Val: 3,
-	}
+	server := gin.Default()
 
-	result := treeNode.InorderTraversal()
+	server.GET("/index", api.Index)
 
-	fmt.Printf("result : %+v\n", result)
-
-	slice := make([]int64, 10)
-
-	for i, v := range slice {
-		fmt.Println("i : ", i, "v : ", v)
-	}
+	server.Run(":9000")
 }
 
 func CalcDateToDays(date string) int {
