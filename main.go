@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"lag/api"
 	"net/http"
-	"strconv"
-
 	_ "net/http/pprof"
+	"os/user"
+	"strconv"
 )
 
 type Info struct {
@@ -22,6 +22,7 @@ func main() {
 	server := gin.Default()
 
 	server.GET("/index", api.Index)
+	server.GET("/deepEqual", api.DeepEqual)
 
 	server.Run(":9000")
 }
@@ -52,4 +53,15 @@ func CalcDateToDays(date string) int {
 	}
 
 	return days
+}
+
+func getHomeDir() string {
+	usr, err := user.Current()
+	if err != nil {
+		fmt.Printf("user.Current err : %+v\n", err)
+
+		return ""
+	}
+
+	return usr.HomeDir
 }

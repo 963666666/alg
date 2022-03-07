@@ -1,6 +1,10 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	_ "embed"
+	"github.com/gin-gonic/gin"
+	"strings"
+)
 
 func Index(c *gin.Context) {
 	for i := 0; i < 1000; i++ {
@@ -10,4 +14,37 @@ func Index(c *gin.Context) {
 	}
 
 	c.String(200, "ok")
+}
+
+type User struct {
+	Prefer string
+	IDCard *IDCardInfo
+}
+
+type IDCardInfo struct {
+	Name string
+	Sex int
+	Age int
+	IDCardNumber string
+	Address *AddressInfo
+}
+
+type AddressInfo struct {
+	City string
+	County string
+	DetailAddr string
+}
+
+//go:embed index.html
+var index string
+
+func DeepEqual(c *gin.Context) {
+	template := strings.ReplaceAll(index, "{{data}}", "hello world")
+
+	c.String(200, template)
+	return
+}
+
+func addTo()  {
+	
 }
