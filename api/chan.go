@@ -3,7 +3,6 @@ package api
 import (
 	_ "embed"
 	"github.com/gin-gonic/gin"
-	"strings"
 )
 
 func Index(c *gin.Context) {
@@ -39,12 +38,7 @@ type AddressInfo struct {
 var index string
 
 func DeepEqual(c *gin.Context) {
-	template := strings.ReplaceAll(index, "{{data}}", "hello world")
 
-	c.String(200, template)
+	c.JSON(200, index)
 	return
-}
-
-func addTo()  {
-	
 }

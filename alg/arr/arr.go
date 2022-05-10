@@ -1,4 +1,4 @@
-package main
+package arr
 
 import (
 	"fmt"
@@ -6,11 +6,23 @@ import (
 	"time"
 )
 
-func main() {
-	str := "abcdefghijklmnopqrstuvwxyz"
-	result := strOverReturn(str)
+func search(nums []int, target int) int {
+	if len(nums) == 1 {
+		if nums[0] != target {
+			return -1
+		}else {
+			return 0
+		}
+	}
 
-	fmt.Println(result)
+	middleIndex := len(nums) / 2
+	if nums[middleIndex] == target {
+		return middleIndex
+	} else if nums[middleIndex] > target {
+		return search(nums[0:middleIndex], target)
+	}else {
+		return search(nums[middleIndex:len(nums)-1], target)
+	}
 }
 
 func strOverReturn(str string) string {

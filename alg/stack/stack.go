@@ -4,15 +4,7 @@ import "fmt"
 
 type Stack struct {
 	elements []interface{}
-}
-
-func main() {
-	s := "()()()  ((()()))"
-	if judgeStrIsValid(s) {
-		fmt.Println("字符串是合法的")
-	} else {
-		fmt.Println("字符串是非法的")
-	}
+	len int64
 }
 
 // 判断字符串括号是否合法
@@ -45,10 +37,17 @@ func searchLeftMin(arr []int) int {
 	for k, v := range arr {
 		if k > 0 {
 			_, ele := stack.Pop()
+			fmt.Println(ele)
 		}
 
 		stack.Push(v)
 	}
+
+	return index
+}
+
+func (s *Stack) MemberCount() int64 {
+	return s.len
 }
 
 func NewStack() *Stack {
@@ -61,6 +60,7 @@ func NewStack() *Stack {
 
 func (s *Stack) Push(element interface{}) {
 	s.elements = append(s.elements, element)
+	s.len ++
 }
 
 func (s *Stack) Pop() (int, interface{}) {
@@ -71,6 +71,7 @@ func (s *Stack) Pop() (int, interface{}) {
 	if len(s.elements) == 1 {
 		element := s.elements[len(s.elements)-1]
 		s.elements = make([]interface{}, 0)
+		s.len = 0
 
 		return 0, element
 	}
@@ -78,6 +79,7 @@ func (s *Stack) Pop() (int, interface{}) {
 	if len(s.elements) > 1 {
 		element := s.elements[len(s.elements)-1]
 		s.elements = s.elements[:len(s.elements)-1]
+		s.len --
 
 		return len(s.elements), element
 	}
