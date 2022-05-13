@@ -9,21 +9,21 @@ import (
 type ConnConfig struct {
 	TcpTransferAfterClose bool
 
-	TcpKeepAlive bool
+	TcpKeepAlive        bool
 	TcpKeepAliveSeconds int
 
 	TcpNoDelay bool
 
-	TcpReadBufferBytes int
+	TcpReadBufferBytes  int
 	TcpWriteBufferBytes int
 }
 
 type Conn struct {
-	connType string
-	conn net.Conn
-	session map[string]interface{}
+	connType   string
+	conn       net.Conn
+	session    map[string]interface{}
 	readBuffer bytes.Buffer
-	uniqId int64
+	uniqId     int64
 
 	closed bool
 }
@@ -31,7 +31,7 @@ type Conn struct {
 func (c *Conn) Init(config *ConnConfig, conn *net.TCPConn) {
 	if config.TcpTransferAfterClose {
 		conn.SetLinger(-1)
-	}else {
+	} else {
 		conn.SetLinger(0)
 	}
 

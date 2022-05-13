@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"lag/api"
-	"net/http"
 	_ "net/http/pprof"
+	"os"
 	"os/user"
 	"strconv"
 )
@@ -17,14 +15,17 @@ type Info struct {
 }
 
 func main() {
-	go http.ListenAndServe("0.0.0.0:6060", nil)
+	fmt.Println(os.Hostname())
+	return
+
+	/*go http.ListenAndServe("0.0.0.0:6060", nil)
 
 	server := gin.Default()
 
 	server.GET("/index", api.Index)
 	server.GET("/deepEqual", api.DeepEqual)
 
-	server.Run(":9000")
+	server.Run(":9000")*/
 }
 
 func CalcDateToDays(date string) int {
