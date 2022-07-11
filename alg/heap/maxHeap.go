@@ -26,6 +26,11 @@ func (h *heap) swap(i, j int) {
 	h.members[i], h.members[j] = h.members[j], h.members[i]
 }
 
+func (h *heap) Sorted() {
+	tempArr := make([]interface{}, len(h.members))
+	fmt.Println(tempArr)
+}
+
 func main() {
 	m := make([]string, 0)
 
