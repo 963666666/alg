@@ -2,20 +2,22 @@ package api
 
 import (
 	_ "embed"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 )
 
 func Index(c *gin.Context) {
-	for i := 0; i < 1000; i++ {
-		ch := make(chan int, 50)
+	hello := []*user{}
+	hello = append(hello, &user{
+		Prefer: "hello",
+	})
 
-		ch = ch
-	}
+	helloBytes, _ := json.Marshal(hello)
 
-	c.String(200, "ok")
+	c.String(200, string(helloBytes))
 }
 
-type User struct {
+type user struct {
 	Prefer string
 	IDCard *IDCardInfo
 }
