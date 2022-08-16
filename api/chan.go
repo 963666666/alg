@@ -2,19 +2,20 @@ package api
 
 import (
 	_ "embed"
-	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
 func Index(c *gin.Context) {
-	hello := []*user{}
-	hello = append(hello, &user{
-		Prefer: "hello",
-	})
+	a := 10
 
-	helloBytes, _ := json.Marshal(hello)
+	defer func(i *int) {
+		fmt.Println("hello defer : ", *i)
+	}(&a)
 
-	c.String(200, string(helloBytes))
+	a += 50
+
+	c.String(200, string("1"))
 }
 
 type user struct {
@@ -23,16 +24,16 @@ type user struct {
 }
 
 type IDCardInfo struct {
-	Name string
-	Sex int
-	Age int
+	Name         string
+	Sex          int
+	Age          int
 	IDCardNumber string
-	Address *AddressInfo
+	Address      *AddressInfo
 }
 
 type AddressInfo struct {
-	City string
-	County string
+	City       string
+	County     string
 	DetailAddr string
 }
 

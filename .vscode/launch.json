@@ -1,0 +1,57 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "publsiher_request_test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "/Users/iss/Desktop/dsp/webapi_go/dsp/publisher_request_test.go",
+            "cwd": "/Users/iss/Desktop/dsp/webapi_go/bin/",
+            // "output": "/Users/iss/Desktop/dsp/webapi_go/bin/",
+            "env": {
+                "WEBAPI_CONFIG": "devel_pro.json"
+            },
+            // "substitutePath": [
+            //     {"from": "/Users/iss/Desktop/dsp/webapi_go/cpi_data/cpi_data_test.go", "to": "/Users/iss/Desktop/dsp/webapi_go/bin" },
+            // ],
+            "args": [
+                "TestDoRequestUrl"
+            ]
+        },
+        {
+            "name": "cpi_data_test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "/Users/iss/Desktop/dsp/webapi_go/cpi_data/cpi_data_test.go",
+            "cwd": "/Users/iss/Desktop/dsp/webapi_go/bin/",
+            // "output": "/Users/iss/Desktop/dsp/webapi_go/bin/",
+            "env": {
+                "WEBAPI_CONFIG": "devel_pro.json"
+            },
+            // "substitutePath": [
+            //     {"from": "/Users/iss/Desktop/dsp/webapi_go/cpi_data/cpi_data_test.go", "to": "/Users/iss/Desktop/dsp/webapi_go/bin" },
+            // ],
+            "args": [
+                "test.run",
+                "TestDoRequestUrl"
+            ]
+        },
+        {
+            "name": "webapp_go application",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "/Users/iss/Desktop/dsp/webapi_go/application.go",
+            "cwd": "/Users/iss/Desktop/dsp/webapi_go/bin/",
+            "env": {
+                "WEBAPI_CONFIG": "devel_pro.json"
+            },
+            "args": []
+        }
+    ]
+}

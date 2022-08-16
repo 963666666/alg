@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/go-gota/gota/dataframe"
 	"gonum.org/v1/plot/plotter"
-	"os"
 )
 
 func readData() error {
