@@ -2,12 +2,20 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"lag/api"
 	"net/http"
 	_ "net/http/pprof"
+	"os"
+	"os/exec"
 	"os/user"
+	"runtime/pprof"
+	"runtime/trace"
 	"strconv"
+	"time"
+
+	"github.com/gin-gonic/gin"
+
+	_ "github.com/andlabs/ui/winmanifest"
 )
 
 type Info struct {
@@ -16,7 +24,7 @@ type Info struct {
 	Desc string
 }
 
-func main() {
+func main1() {
 	go http.ListenAndServe("0.0.0.0:6060", nil)
 
 	server := gin.Default()
@@ -33,7 +41,7 @@ func CalcDateToDays(date string) int {
 	}
 	year, _ := strconv.Atoi(date[:4])
 	month, _ := strconv.Atoi(date[5:7])
-	day, _:= strconv.Atoi(date[9:])
+	day, _ := strconv.Atoi(date[9:])
 
 	monthDays := []int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 
@@ -48,7 +56,7 @@ func CalcDateToDays(date string) int {
 
 	fmt.Println(monthDays[:month-1])
 
-	for i := 0; i < month; i ++ {
+	for i := 0; i < month; i++ {
 		days += monthDays[i]
 	}
 
@@ -64,4 +72,31 @@ func getHomeDir() string {
 	}
 
 	return usr.HomeDir
+}
+
+func main3() {
+	threadProfile := pprof.Lookup("threadcreate")
+	fmt.Printf("initthreadscounts:%d\n", threadProfile.Count())
+
+	f, err := os.Create("threads_trace.out")
+	if err != nil {
+		panic(err)
+	}
+
+	err = trace.Start(f)
+	if err != nil {
+		panic(err)
+	}
+	defer trace.Stop()
+
+	for i := 0; i < 20; i++ {
+		go func() {
+			_, err := exec.Command("bash", "-c", "sleep 3").Output()
+			if err != nil {
+				panic(err)
+			}
+		}()
+	}
+	time.Sleep(time.Second * 5)
+	fmt.Printf("endthreadscounts:%d\n", threadProfile.Count())
 }
